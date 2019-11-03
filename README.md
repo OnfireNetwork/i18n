@@ -21,6 +21,17 @@ AddEvent("OnPlayerQuit", function(player)
 end
 ```
 
+## Config
+By default it uses "en" as language. To select another language for your server you have to create a config.  
+i18n.json
+```json
+{
+  "language": "de"
+}
+```
+In case the server language doesn't exist for a package it falls back to en.
+Per player translations aren't implemented yet but i might implement it in the future if s.b. needs this feature.
+
 ## Events
 On the client-side it takes a moment to download the translations.
 Once the translations are ready the event `OnTranslationReady` is fired. (on the server-side with the player as param)
