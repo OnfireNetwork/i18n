@@ -1,4 +1,10 @@
 function translate(package, key, ...)
+    if translations == nil then
+        return "i18n_not_ready"
+    end
+    if translations[package] == nil then
+        return "i18n_missing_package"
+    end
     if translations == nil or translations[package] == nil then
         return "i18n_missing_package"
     end
