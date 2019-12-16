@@ -15,10 +15,10 @@ packages/your_package/script.lua
 local _ = function(k,...) return ImportPackage("i18n").t(GetPackageName(),k,...) end
 AddEvent("OnPlayerJoin", function(player)
   AddPlayerChatAll(_("player_join", GetPlayerName(player)))
-end
+end)
 AddEvent("OnPlayerQuit", function(player)
   AddPlayerChatAll(_("player_quit", GetPlayerName(player)))
-end
+end)
 ```
 
 ## Config
