@@ -1,7 +1,7 @@
 translations = {}
 local files = {}
 local language = "en"
-local packages = {}
+local packages = nil
 
 local function readFile(name)
     local fh = io.open(name, "r")
@@ -17,8 +17,10 @@ local function readFile(name)
 end
 local function loadConfig()
     local fileContent = readFile("server_config.json")
-    local serverConfig = json_decode(fileContent)
-    packages = serverConfig.packages
+    if fileContent ~= nil then
+        local serverConfig = json_decode(fileContent)
+        packages = serverConfig.packages
+    end
     fileContent = readFile("i18n.json")
     if fileContent == nil then
         return
@@ -26,8 +28,13 @@ local function loadConfig()
     local config = json_decode(fileContent)
     if config.language ~= nil then
         language = config.language
+        if packages == nil then
+            packages = config.packages
+        end
     end
-    
+    if packages == nil then
+        packages = {}    
+    end
 end
 
 loadConfig()
