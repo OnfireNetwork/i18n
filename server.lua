@@ -20,6 +20,8 @@ local function loadConfig()
     if fileContent ~= nil then
         local serverConfig = json_decode(fileContent)
         packages = serverConfig.packages
+    else
+        print("[i18n] server_config.json not found, falling back on i18n.json")
     end
     fileContent = readFile("i18n.json")
     if fileContent == nil then
@@ -33,6 +35,7 @@ local function loadConfig()
         end
     end
     if packages == nil then
+        print("[i18n] server_config.json and i18n.json not found, no translations are loaded")
         packages = {}    
     end
 end
